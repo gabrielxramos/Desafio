@@ -12,10 +12,10 @@ import br.com.gabrielramos.desafiosouthsystem.presenter.extensions.formatDate
 import kotlinx.android.synthetic.main.item_list.view.*
 
 class RecyclerAdapter(
-    private val list: ArrayList<ListItemsResponse>,
-    private val context: Context,
-    private val onItemClickListener: ((id: String)-> Unit)
-): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+        private val list: ArrayList<ListItemsResponse>,
+        private val ctx: Context,
+        private val onItemClickListener: ((id: String) -> Unit)
+): RecyclerView.Adapter<RecyclerAdapter.ViewHolder> () {
 
     companion object {
         const val VIEW_TYPE_PIX = 2
@@ -27,17 +27,17 @@ class RecyclerAdapter(
     }
 
     class ViewHolder(
-        val view: View,
-        private val onItemClickListener: ((id: String) -> Unit)
-    ): RecyclerView.ViewHolder(view){
+            val view: View,
+            private val onItemClickListener: ((id: String) -> Unit)
+    ): RecyclerView.ViewHolder(view) {
 
         private val description = view.textViewDescription
         private val name = view.textViewName
         private val date = view.textViewDate
         private val amount = view.textViewValues
 
-        fun bindView(listItem: ListItemsResponse){
-            view.setOnClickListener{
+        fun bindView(listItem: ListItemsResponse) {
+            view.setOnClickListener {
                 onItemClickListener.invoke(listItem.id)
             }
 
@@ -54,15 +54,15 @@ class RecyclerAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return if (viewType == VIEW_TYPE_PIX){
+        return if (viewType == VIEW_TYPE_PIX) {
             ViewHolder(
-                LayoutInflater.from(context).inflate(R.layout.item_list_pix, parent, false),
-                onItemClickListener
+                    LayoutInflater.from(ctx).inflate(R.layout.item_list_pix, parent, false),
+                    onItemClickListener
             )
-        }else{
+        } else {
             ViewHolder(
-                LayoutInflater.from(context).inflate(R.layout.item_list_pix, parent, false),
-                onItemClickListener
+                    LayoutInflater.from(ctx).inflate(R.layout.item_list, parent, false),
+                    onItemClickListener
             )
         }
     }
@@ -80,6 +80,4 @@ class RecyclerAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindView(list[position])
     }
-
-
 }

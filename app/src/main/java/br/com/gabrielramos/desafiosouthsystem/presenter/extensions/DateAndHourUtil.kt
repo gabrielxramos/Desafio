@@ -3,7 +3,6 @@ package br.com.gabrielramos.desafiosouthsystem.presenter.extensions
 import java.text.ParseException
 import java.text.SimpleDateFormat
 
-
     fun formatDateAndHour(createdAt: String): String {
         val FULL_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'"
         val DATE_MONTH_FORMAT = "dd/MM - HH:mm:ss"

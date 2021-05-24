@@ -12,11 +12,6 @@ import retrofit2.http.Path
 
 interface BankApi {
 
-    companion object ServiceBuilder {
-
-
-    }
-
     @GET("myBalance")
     fun getAmount(
         @Header("token") token: String
